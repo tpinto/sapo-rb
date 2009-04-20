@@ -1,0 +1,15 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+bin/sapo
+lib/sapo.rb
+lib/sapo/adsl.rb
+lib/sapo/adwords.rb
+lib/sapo/auto.rb
+lib/sapo/blogs.rb
+lib/sapo/jobs.rb
+lib/sapo/photos.rb
+lib/sapo/shopping.rb
+lib/sapo/traffic.rb
+test/test_sapo.rb

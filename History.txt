@@ -1,0 +1,8 @@
+== 0.0.2 / 2007-11-25
+
+* Bugfix on requirements
+
+== 0.0.1 / 2007-11-20
+
+* First release!
+
