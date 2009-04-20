@@ -1,3 +1,7 @@
+require File.join(File.dirname(__FILE__), '..', 'sapo.rb')
+require 'open-uri'
+require 'json'
+
 module SAPO
   module Shopping
     class Listing
@@ -14,7 +18,7 @@ module SAPO
     
     # FIXME: add sort and pagination options
     def self.search(query = "")
-      output = Net::HTTP.get(URI.parse("http://services.sapo.pt/Shopping/search?q=#{query}"))
+      output = open("http://services.sapo.pt/Shopping/search?q=#{query}").read
       json = JSON.parse(output)
       
       return json["rss"]["channel"]["item"].map do |p|

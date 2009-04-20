@@ -1,3 +1,7 @@
+require File.join(File.dirname(__FILE__), '..', 'sapo.rb')
+require 'open-uri'
+require 'json'
+
 module SAPO
   module Photos
     class Photo
@@ -15,15 +19,15 @@ module SAPO
     # FIXME: add sort and pagination options
     def self.search(options = {})
       if options.is_a?(String)
-        output = Net::HTTP.get(URI.parse("http://services.sapo.pt/Photos/JSON?tag=#{options}"))
+        output = open("http://services.sapo.pt/Photos/JSON?tag=#{options}").read
       elsif options.is_a?(Hash)
         options = {:user => "", :tag => ""}.merge(options)
         if options[:user] != "" and options[:tag] != ""
-          output = Net::HTTP.get(URI.parse("http://services.sapo.pt/Photos/JSON?u=#{options[:user]}&tag=#{options[:tag]}"))
+          output = open("http://services.sapo.pt/Photos/JSON?u=#{options[:user]}&tag=#{options[:tag]}").read
         elsif options[:user] == "" and options[:tag] != ""
-          output = Net::HTTP.get(URI.parse("http://services.sapo.pt/Photos/JSON?tag=#{options[:tag]}"))
+          output = open("http://services.sapo.pt/Photos/JSON?tag=#{options[:tag]}").read
         elsif options[:user] != "" and options[:tag] == ""
-          output = Net::HTTP.get(URI.parse("http://services.sapo.pt/Photos/JSON?u=#{options[:user]}"))
+          output = open("http://services.sapo.pt/Photos/JSON?u=#{options[:user]}").read
         else
           return []
         end

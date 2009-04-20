@@ -1,3 +1,7 @@
+require File.join(File.dirname(__FILE__), '..', 'sapo.rb')
+require 'open-uri'
+require 'json'
+
 module SAPO
   module AdWords
     class Ad
@@ -5,7 +9,7 @@ module SAPO
     end
     
     def self.search(query)
-      output = Net::HTTP.get(URI.parse("http://services.sapo.pt/AdWords/JSON?q=#{query}&o=json"))
+      output = open("http://services.sapo.pt/AdWords/JSON?q=#{query}&o=json").read
       linhas = output.split("\n")
       linhas[0] = "["
       linhas[linhas.size-1] = "]"

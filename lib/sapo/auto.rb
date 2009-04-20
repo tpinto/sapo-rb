@@ -1,3 +1,7 @@
+require File.join(File.dirname(__FILE__), '..', 'sapo.rb')
+require 'open-uri'
+require 'json'
+
 module SAPO
   module Auto
     class Car
@@ -11,12 +15,12 @@ module SAPO
       return [] if options[:brand] == "" and options[:model] == ""
 
       if options.is_a?(String)
-        output = Net::HTTP.get(URI.parse("http://services.sapo.pt/Auto/JSON?q=#{CGI.escape(options)}"))
+        output = open("http://services.sapo.pt/Auto/JSON?q=#{CGI.escape(options)}").read
       else
         if options[:brand] != "" and options[:model] != ""
-          output = Net::HTTP.get(URI.parse("http://services.sapo.pt/Auto/JSON?q=Brand:#{options[:brand]}+Model:#{CGI.escape(options[:model])}"))
+          output = open("http://services.sapo.pt/Auto/JSON?q=Brand:#{options[:brand]}+Model:#{CGI.escape(options[:model])}").read
         elsif options[:brand] != ""
-          output = Net::HTTP.get(URI.parse("http://services.sapo.pt/Auto/JSON?q=#{options[:brand]}"))
+          output = open("http://services.sapo.pt/Auto/JSON?q=#{options[:brand]}").read
         end
       end
         
