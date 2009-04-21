@@ -1,6 +1,6 @@
 = saporb
-    by Tiago Pinto
-    http://whythehype.com/
+  by Tiago Pinto
+  http://whythehype.com/
 
 == DESCRIPTION:
   
@@ -19,6 +19,7 @@ Ruby interface to SAPO APIs (http://services.sapo.pt/)
   * Photos
   * Shopping
   * Traffic
+  * ID
 
 * To be supported: the ones using SOAP
 
@@ -35,7 +36,8 @@ Ruby interface to SAPO APIs (http://services.sapo.pt/)
 
 == INSTALL:
 
-* sudo gem install sapo
+  sudo gem sources -a http://gems.github.com/
+  sudo gem install sapo
 
 == LICENSE:
 
