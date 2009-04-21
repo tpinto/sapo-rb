@@ -1,3 +1,8 @@
+== 0.0.3 / 2009-04-21
+
+* Added support for SapoID
+* Rewrote the way how requires between sapo.rb and sapo/*.rb work.
+
 == 0.0.2 / 2007-11-25
 
 * Bugfix on requirements
