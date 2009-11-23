@@ -1,17 +1,20 @@
-# -*- ruby -*-
-
-require 'rubygems'
-require 'hoe'
-require './lib/sapo.rb'
-
-Hoe.new('sapo', SAPO::VERSION) do |p|
-  p.rubyforge_name = 'sapo'
-  p.author = 'Tiago Pinto'
-  p.email = 'tpinto@webreakstuff.com'
-  p.summary = 'Ruby interface to SAPO APIs'
-  p.description = p.paragraphs_of('README.txt', 2..5).join("\n\n")
-  p.url = p.paragraphs_of('README.txt', 0).first.split(/\n/)[1..-1]
-  p.changes = p.paragraphs_of('History.txt', 0..1).join("\n\n")
+begin
+  require 'jeweler'
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install jeweler"
+  exit 1
 end
 
-# vim: syntax=Ruby
+require 'sapo'
+
+Jeweler::Tasks.new do |gemspec|
+  gemspec.version = SAPO::VERSION
+  gemspec.name = "sapo-rb"
+  gemspec.summary = "Ruby interface to SAPO APIs"
+  gemspec.description = "As seen on http://services.sapo.pt/"
+  gemspec.email = "tpinto@webreakstuff.com"
+  gemspec.homepage = "http://tpinto.github.com/sapo-rb/"
+  gemspec.authors = ["Tiago Pinto"]
+end
+
+Jeweler::GemcutterTasks.new
