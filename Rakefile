@@ -9,7 +9,8 @@ begin
     gemspec.email = "tpinto@webreakstuff.com"
     gemspec.homepage = "http://tpinto.github.com/sapo-rb/"
     gemspec.authors = ["Tiago Pinto"]
-    gemspec.version = SAPO::VERSION
+    gemspec.version = Sapo::VERSION
+    gemspec.rubyforge_project = "sapo-rb"
     
     gemspec.add_dependency 'curb'
   end

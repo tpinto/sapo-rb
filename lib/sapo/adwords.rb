@@ -1,8 +1,4 @@
-require File.join(File.dirname(__FILE__), '..', 'sapo.rb')
-require 'open-uri'
-require 'json'
-
-module SAPO
+module Sapo
   module AdWords
     class Ad
       attr_accessor :display_url, :destination_url, :description_1, :description_2

@@ -1,8 +1,4 @@
-require File.join(File.dirname(__FILE__), '..', 'sapo.rb')
-require 'open-uri'
-require 'json'
-
-module SAPO
+module Sapo
   module Jobs
     class Offer
       attr_accessor :title, :link, :region, :published_at, :description

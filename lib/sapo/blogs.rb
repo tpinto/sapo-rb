@@ -1,8 +1,4 @@
-require File.join(File.dirname(__FILE__), '..', 'sapo.rb')
-require 'open-uri'
-require 'json'
-
-module SAPO
+module Sapo
   module Blogs
     class Post
       attr_accessor :title, :link, :author, :created_at, :description, :blog

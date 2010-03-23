@@ -1,4 +1,4 @@
-module SAPO
+module Sapo
   class STS
     attr_accessor :endpoint, :connector, :https
     

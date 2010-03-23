@@ -1,8 +1,4 @@
-require File.join(File.dirname(__FILE__), '..', 'sapo.rb')
-require 'rexml/document'
-require 'net/https'
-
-module SAPO
+module Sapo
   class ID
     attr_accessor :email, :password, :primary, :token
     

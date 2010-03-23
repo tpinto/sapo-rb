@@ -1,15 +1,17 @@
+require 'rubygems'
 require 'rexml/document'
 require 'net/https'
 require 'uri'
-require 'rubygems'
 require 'curb'
+require 'open-uri'
+require 'json'
 
-%w[connector sts videos].each{|l| require File.join(File.dirname(__FILE__), 'sapo', "#{l}.rb") }
+%w[adwords adsl auto blogs connector id jobs photos shopping sts traffic videos].each{|l| require File.join(File.dirname(__FILE__), 'sapo', "#{l}.rb") }
 
-module SAPO
-  VERSION = '0.0.7'
+module Sapo
+  VERSION = '0.0.8'
   
-  def self.auth(email, pass)
-    SAPO::Connector.new(email, pass)
+  def self.auth(credentials = {})
+    Connector.new(credentials)
   end
 end

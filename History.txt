@@ -1,3 +1,7 @@
+== 0.0.8 / 2010-03-23
+
+* Changed SAPO to Sapo.
+
 == 0.0.7 / 2010-03-22
 
 * Declared dependency of "curb"
@@ -6,7 +10,9 @@
 
 * Added support to upload videos and request tokens
 
-== 0.0.5 ?
+== 0.0.5 / ?
+
+* Danced some polka.
 
 == 0.0.4 / 2009-11-23
 

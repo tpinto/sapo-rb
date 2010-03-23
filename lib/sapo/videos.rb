@@ -1,4 +1,4 @@
-module SAPO
+module Sapo
   class Videos
     attr_accessor :uri, :connector, :https
     
@@ -63,13 +63,12 @@ module SAPO
       
       request = %Q|<AddVideoPost xmlns="http://services.sapo.pt/definitions">
   <Video>
-    <Subtitle>#{video[:subtitle]}</Subtitle>
-    <Synopse>#{video[:synopse]}</Synopse>
     <Title>#{video[:title]}</Title>
     <Active>#{boolean_to_binary_string[video[:active]]}</Active>
+    <Synopse>#{video[:synopse]}</Synopse>
+    <Subtitle>#{video[:subtitle]}</Subtitle>
     <Tags>#{video[:tags]}</Tags>
   </Video>
-  <Email>#{@connector.email}</Email>
 </AddVideoPost>|
       
       
@@ -77,12 +76,13 @@ module SAPO
             
       resp, body = do_post_request(data, headers_for(data.size, "AddVideoPost"))
       
+      code = resp.code.to_i
       randname = body.scan(/<ns1:Randname>(.*)<\/ns1:Randname>/)
       
-      if resp.code == 200 and randname.any?
-        return randname.first
+      if code == 200 and randname.any?
+        return code, randname.first.to_s
       else
-        return body
+        return code, body
       end
     end
     

@@ -1,10 +1,10 @@
-module SAPO
+module Sapo
   class Connector
     attr_accessor :email, :password, :videos, :sts, :http, :https
     
-    def initialize(email, pass)
-      @email = email
-      @password = pass
+    def initialize(credentials = {})
+      @email = credentials[:email]
+      @password = credentials[:password]
       
       @https = Net::HTTP.new("services.sapo.pt", 443)
       @https.use_ssl = true
@@ -23,11 +23,11 @@ module SAPO
     end
     
     def videos
-      @videos ||= SAPO::Videos.new(self)
+      @videos ||= Videos.new(self)
     end
     
     def sts
-      @sts ||= SAPO::STS.new(self)
+      @sts ||= STS.new(self)
     end
   end
 end
