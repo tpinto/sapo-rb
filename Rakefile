@@ -10,9 +10,11 @@ begin
     gemspec.homepage = "http://tpinto.github.com/sapo-rb/"
     gemspec.authors = ["Tiago Pinto"]
     gemspec.version = SAPO::VERSION
+    
+    gemspec.add_dependency 'curb'
   end
+  
+  Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler not available. Install it with: gem install jeweler"
+  puts "Jeweler (or other dependency) not available. Install it with: gem install jeweler"
 end
-
-Jeweler::GemcutterTasks.new

@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{sapo-rb}
-  s.version = "0.0.5"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tiago Pinto"]
-  s.date = %q{2010-03-14}
+  s.date = %q{2010-03-22}
   s.description = %q{As seen on http://services.sapo.pt/}
   s.email = %q{tpinto@webreakstuff.com}
   s.extra_rdoc_files = [
@@ -34,12 +34,7 @@ Gem::Specification.new do |s|
      "lib/sapo/shopping.rb",
      "lib/sapo/traffic.rb",
      "sapo-rb.gemspec",
-     "test/test_sapo.rb",
-     "wsdl/Videos.wsdl",
-     "wsdl/VideosClient.rb",
-     "wsdl/default.rb",
-     "wsdl/defaultDriver.rb",
-     "wsdl/defaultMappingRegistry.rb"
+     "test/test_sapo.rb"
   ]
   s.homepage = %q{http://tpinto.github.com/sapo-rb/}
   s.rdoc_options = ["--charset=UTF-8"]
