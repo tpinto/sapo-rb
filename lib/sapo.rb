@@ -2,7 +2,6 @@ require 'rubygems'
 require 'rexml/document'
 require 'net/https'
 require 'uri'
-require 'curb'
 require 'open-uri'
 require 'json'
 
