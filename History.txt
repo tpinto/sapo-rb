@@ -1,10 +1,14 @@
 == 0.0.8 / 2010-03-23
 
+* Declared dependency on "json"
+
+== 0.0.8 / 2010-03-23
+
 * Changed SAPO to Sapo.
 
 == 0.0.7 / 2010-03-22
 
-* Declared dependency of "curb"
+* Declared dependency on "curb"
 
 == 0.0.6 / 2010-03-22
 

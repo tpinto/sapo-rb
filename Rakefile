@@ -13,6 +13,7 @@ begin
     gemspec.rubyforge_project = "sapo-rb"
     
     gemspec.add_dependency 'curb'
+    gemspec.add_dependency 'json'
   end
   
   Jeweler::GemcutterTasks.new
