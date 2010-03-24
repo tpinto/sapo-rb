@@ -1,3 +1,7 @@
+== 0.0.10 / 2010-03-23
+
+* Removed dependency on curb/curl
+
 == 0.0.8 / 2010-03-23
 
 * Declared dependency on "json"
