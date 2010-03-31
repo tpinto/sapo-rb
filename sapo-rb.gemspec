@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{sapo-rb}
-  s.version = "0.0.10"
+  s.version = "0.0.11"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tiago Pinto"]
-  s.date = %q{2010-03-24}
+  s.date = %q{2010-03-31}
   s.description = %q{SAPO APIs ruby binding. Developed by @tpinto}
   s.email = %q{tpinto@webreakstuff.com}
   s.extra_rdoc_files = [
