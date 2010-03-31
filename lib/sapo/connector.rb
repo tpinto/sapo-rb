@@ -26,7 +26,8 @@ module Sapo
     end
     
     def do_post(path, data, headers)
-      @http.post2("/soap.php", data, headers)
+      path = @uri.path.empty? ? path : @uri.path
+      @http.post2(path, data, headers)
     end
     
     def esb_credentials

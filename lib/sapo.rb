@@ -8,7 +8,7 @@ require 'json'
 %w[adwords adsl auto blogs connector id jobs photos shopping sts traffic videos].each{|l| require File.join(File.dirname(__FILE__), 'sapo', "#{l}.rb") }
 
 module Sapo
-  VERSION = '0.0.11'
+  VERSION = '0.0.12'
   
   def self.auth(l, p, o = {})
     Connector.new(l, p, o)
