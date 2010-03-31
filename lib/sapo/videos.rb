@@ -19,23 +19,23 @@ module Sapo
       return body
     end
     
-#    def uploadVideo(randname, local_path)
-#=begin
-#  <form action="http://upload01.videos.sapo.pt/upload_token.html" method="post" enctype="multipart/form-data">
-#    <input type="file" name="content_file"> 
-#    <input type="hidden" name="redir" value="http://videos.sapo.pt"> 
-#    <input type="hidden" name="token" value="TOKEN VALUE"> 
-#    <input type="submit"> 
-#  </form>
-#=end
-#      
-#      c = Curl::Easy.new("http://upload01.videos.sapo.pt/upload_token.html")
-#      c.multipart_form_post = true
-#      c.http_post(
-#        Curl::PostField.content("token", @connector.sts.getToken(:extra_info => randname).to_s),
-#        Curl::PostField.file("content_file", local_path)
-#      )
-#    end
+    def uploadVideo(randname, local_path)
+=begin
+  <form action="http://upload01.videos.sapo.pt/upload_token.html" method="post" enctype="multipart/form-data">
+    <input type="file" name="content_file"> 
+    <input type="hidden" name="redir" value="http://videos.sapo.pt"> 
+    <input type="hidden" name="token" value="TOKEN VALUE"> 
+    <input type="submit"> 
+  </form>
+=end
+      
+      c = Curl::Easy.new("http://upload.emc.videos.sapo.pt/upload_token.html")
+      c.multipart_form_post = true
+      c.http_post(
+        Curl::PostField.content("token", @connector.sts.getToken(:extra_info => randname).to_s),
+        Curl::PostField.file("content_file", local_path)
+      )
+    end
     
     def checkVideo(randname)
       request = %Q|<CheckVideo xmlns="http://services.sapo.pt/definitions">
@@ -44,9 +44,9 @@ module Sapo
           
       data = data_for(request)
       
-      resp, body = do_post_request(data, headers_for(data.size, "CheckVideo"))
+      resp = do_post_request(data, headers_for(data.size, "CheckVideo"))
       
-      return body
+      return Video.new(resp.body)
     end
     
     def addVideoPost(video = {})
@@ -55,10 +55,12 @@ module Sapo
         0       => "0",
         :false  => "0",
         "false" => "0",
+        "0"     => "0",
         true    => "1",
         1       => "1",
         :true   => "1",
-        "true"  => "1"
+        "true"  => "1",
+        "1"     => "1"
       }
       
       request = %Q|<AddVideoPost xmlns="http://services.sapo.pt/definitions">
@@ -109,7 +111,7 @@ module Sapo
     end
     
     def do_post_request(data, headers)
-      @https.post("/Videos", data, headers)
+      @connector.do_post("/soap.php", data, headers)
     end
   end
 end

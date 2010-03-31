@@ -1,10 +1,9 @@
 module Sapo
   class STS
-    attr_accessor :endpoint, :connector, :https
+    attr_accessor :endpoint, :connector
     
     def initialize(connector)
       @connector = connector
-      @https = connector.https
     end
     
     def getToken(options = {})
@@ -28,7 +27,7 @@ module Sapo
         "SOAPAction" => %Q|"http://services.sapo.pt/definitions/GetToken"|
       }
       
-      resp, body = @https.post("/STS", request, headers)
+      resp, body = @connector.do_post("/STS", request, headers)
             
       token = body.scan(/<GetTokenResult>(.*)<\/GetTokenResult>/)
       

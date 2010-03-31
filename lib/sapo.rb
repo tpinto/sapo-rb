@@ -10,7 +10,7 @@ require 'json'
 module Sapo
   VERSION = '0.0.10'
   
-  def self.auth(credentials = {})
-    Connector.new(credentials)
+  def self.auth(l, p, o = {})
+    Connector.new(l, p, o)
   end
 end

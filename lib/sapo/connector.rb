@@ -1,18 +1,31 @@
 module Sapo
   class Connector
-    attr_accessor :email, :password, :videos, :sts, :http, :https
+    attr_accessor :email, :password, :videos, :sts, :http, :https, :uri, :endpoint, :use_ssl
     
-    def initialize(credentials = {})
-      @email = credentials[:email]
-      @password = credentials[:password]
+    def initialize(email, password, options = {})
+      @email = email
+      @password = password
       
-      @https = Net::HTTP.new("services.sapo.pt", 443)
-      @https.use_ssl = true
-      @https.verify_mode = OpenSSL::SSL::VERIFY_PEER
-      @https.ca_file = File.join(File.dirname(__FILE__), "cacert.pem")
+      @uri = URI.parse(options[:endpoint] || "https://services.sapo.pt")
+      @use_ssl = options[:ssl] || (@uri.scheme == "https")
       
-      @http = Net::HTTP.new("services.sapo.pt", 80)
-      @http.use_ssl = false
+      if ssl?
+        @http = Net::HTTP.new(@uri.host, 443)
+        @http.use_ssl = true
+        @http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+        @http.ca_file = File.join(File.dirname(__FILE__), "cacert.pem")
+      else
+        @http = Net::HTTP.new(@uri.host, 80)
+        @http.use_ssl = false
+      end
+    end
+    
+    def ssl?
+      @use_ssl
+    end
+    
+    def do_post(path, data, headers)
+      @http.post2("/soap.php", data, headers)
     end
     
     def esb_credentials
