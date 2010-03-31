@@ -1,6 +1,6 @@
 module Sapo
   class Connector
-    attr_accessor :email, :password, :videos, :sts, :http, :https, :uri, :endpoint, :use_ssl
+    attr_accessor :email, :password, :videos, :sts, :http, :https, :uri, :endpoint, :use_ssl, :upload_url
     
     def initialize(email, password, options = {})
       @email = email
@@ -8,6 +8,7 @@ module Sapo
       
       @uri = URI.parse(options[:endpoint] || "https://services.sapo.pt")
       @use_ssl = options[:ssl] || (@uri.scheme == "https")
+      @upload_url = options[:upload_url] || "http://upload01.videos.sapo.pt/upload_token.html"
       
       if ssl?
         @http = Net::HTTP.new(@uri.host, 443)

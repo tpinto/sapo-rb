@@ -29,7 +29,7 @@ module Sapo
   </form>
 =end
       
-      c = Curl::Easy.new("http://upload.emc.videos.sapo.pt/upload_token.html")
+      c = Curl::Easy.new(@connector.upload_url)
       c.multipart_form_post = true
       c.http_post(
         Curl::PostField.content("token", @connector.sts.getToken(:extra_info => randname).to_s),
