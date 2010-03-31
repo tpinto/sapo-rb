@@ -46,7 +46,7 @@ module Sapo
       
       resp = do_post_request(data, headers_for(data.size, "CheckVideo"))
       
-      return Video.new(resp.body)
+      return resp.body
     end
     
     def addVideoPost(video = {})
